@@ -1,0 +1,18 @@
+version: '3'
+services:
+  tawk_dingding: 
+    build:
+      context: app
+    # flask requires SIGINT to stop gracefully
+    # (default stop signal from Compose is SIGTERM)
+    stop_signal: SIGINT
+    ports:
+      - '8000:8000'
+    restart: always
+    environment:
+      # write dingding url here,such as https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxxxxxxxxxxx
+      - TAWK_DINGDING_URL=xxxxx
+      # write dingding sign here,such as xxxx
+      - TAWK_DINGDING_SIGN=xxxx
+      # port ，must equal to the port
+      - TAWK_DINGDING_PORT=8000
